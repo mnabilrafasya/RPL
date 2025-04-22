@@ -120,9 +120,7 @@ function MatchItem({ teamA, teamB, time, status, score }: any) {
     <View style={styles.matchItem}>
       <View style={styles.teamBox}>
         <Image
-          source={{
-    uri: "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-  }}
+          source={require("../../assets/images/Barcelona.png")}
           style={styles.teamLogo}
         />
         <Text style={styles.matchText}>{teamA}</Text>
@@ -136,9 +134,7 @@ function MatchItem({ teamA, teamB, time, status, score }: any) {
       <View style={[styles.teamBox, styles.teamBoxRight]}>
         <Text style={styles.matchText}>{teamB}</Text>
         <Image
-          source={{
-    uri: "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-  }}
+          source={require("../../assets/images/Barcelona.png")}
           style={styles.teamLogo}
         />
       </View>
