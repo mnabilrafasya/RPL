@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#000",
     paddingHorizontal: 16,
-    paddingTop: Platform.OS === "android" ? 32 : 0, // tambahkan padding atas untuk status bar
+    paddingTop: Platform.OS === "android" ? 42 : 0, // tambahkan padding atas untuk status bar
     flex: 1,
   },
   header: {
