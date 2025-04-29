@@ -1,0 +1,22 @@
+/* src/components/NewsCarousel.module.css */
+.wrapper { position:relative; margin-bottom:1rem; }
+.wrapper img {
+  width:100%; border-radius:.5rem; object-fit:cover;
+  height:12rem;
+}
+.overlay {
+  position:absolute; bottom:1rem; left:1rem; color:#fff;
+  text-shadow:0 0 .5rem #000;
+}
+.tag {
+  background:#222; padding:.25rem .5rem; border-radius:1rem;
+  font-size:.65rem; margin-bottom:.5rem; display:inline-block;
+}
+.dots {
+  position:absolute; bottom:.5rem; right:1rem; display:flex;
+}
+.dot, .dotActive {
+  width:.5rem; height:.5rem; margin-left:.25rem; border-radius:50%;
+  border:none; background:#555;
+}
+.dotActive { background:#ff0; }

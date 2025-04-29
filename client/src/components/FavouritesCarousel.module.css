@@ -1,0 +1,36 @@
+/* src/components/FavouritesCarousel.module.css */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 4.5rem;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--bg-alt);
+  margin-bottom: 0.5rem;
+  transition: transform var(--transition);
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card span {
+  font-size: 0.75rem;
+  color: var(--text-alt);
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 6rem;
+  }
+}

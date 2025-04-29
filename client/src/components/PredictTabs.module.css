@@ -1,0 +1,15 @@
+/* src/components/PredictTabs.module.css */
+.scroll {
+    display:flex; overflow-x:auto; margin-bottom:1rem;
+  }
+  .btn, .active {
+    flex:0 0 auto; margin-right:.75rem;
+    padding:.5rem .75rem; border:none; border-radius:1.5rem;
+    background:#222; color:#bbb; font-size:.85rem;
+    display:flex; align-items:center;
+  }
+  .active {
+    background:#ff0; color:#000;
+  }
+  .icon { width:1.2rem; height:1.2rem; margin-right:.4rem; }
+  

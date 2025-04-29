@@ -1,0 +1,7 @@
+/* src/components/SearchBar.module.css */
+.wrapper { margin-bottom:1rem; }
+.input {
+  width:100%; padding:.5rem 1rem;
+  border-radius:999px; border:none;
+  background:#222; color:#fff;
+}

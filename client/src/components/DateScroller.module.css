@@ -1,0 +1,31 @@
+/* src/components/DateScroller.module.css */
+.scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.btn,
+.active {
+  flex-shrink: 0;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  color: var(--text-alt);
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.active {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+@media (max-width: 400px) {
+  .btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
