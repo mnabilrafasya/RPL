@@ -1,31 +1,30 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './App.css';
-
 // src/App.jsx
-import Navbar from './components/Navbar';
+import React from 'react';
+import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import Home from './pages/Home';
 import Matches from './pages/Matches';
-import Feed from './pages/Feed';
-import Predict from './pages/Predict';
-import Profile from './pages/Profile';
-import CreateAccount from './pages/CreateAccount';
+import News from './pages/News';
+import Stats from './pages/Stats';
+import './App.css'; // Assuming you have some CSS for styling
 
 export default function App() {
   return (
-    <div className="App">
-    <Navbar />
-    <main className="main">
-      <div className="container">
+    <div className="app">
+      <nav className="nav">
+        <Link to="/">Home</Link>
+        <Link to="/matches">Matches</Link>
+        <Link to="/news">Berita</Link>
+        <Link to="/stats">Statistik</Link>
+      </nav>
+      <main>
         <Routes>
-          <Route path="/" element={<Navigate to="/matches" replace />} />
+          <Route path="/" element={<Home />} />
           <Route path="/matches" element={<Matches />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/predict" element={<Predict />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="*" element={<h2>404 – Halaman Tidak Ditemukan</h2>} />
+          <Route path="/news" element={<News />} />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </div>
-    </main>
-  </div>
+      </main>
+    </div>
   );
 }

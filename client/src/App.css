@@ -1,8 +1,24 @@
-#root {
+/*#root {
   max-width: 1280px;
+
+}
+*/
+
+.app {
   margin: 0 auto;
+}
+.nav {
+  display: flex;
+  gap: 1rem;
+  background: #333;
   padding: 2rem;
-  text-align: center;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+}
+.nav a:hover {
+  text-decoration: underline;
 }
 
 .container {

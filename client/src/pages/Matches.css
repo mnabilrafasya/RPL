@@ -1,0 +1,25 @@
+/* src/pages/Matches.css */
+.matches { padding: 1rem; }
+.matches h2 { margin-bottom: 0.5rem; color: var(--primary); }
+.match-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.logo {
+  width: 2rem;
+  margin: 0 .5rem;
+}
+.team-name {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+}
+.score {
+  width: 4rem;
+  text-align: center;
+  font-weight: 700;
+}

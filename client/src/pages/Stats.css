@@ -1,0 +1,29 @@
+/* src/pages/Stats.css */
+.stats { padding: 1rem; }
+.stats h2 { margin-bottom: .5rem; color: var(--primary); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th, td {
+  padding: .5rem;
+  text-align: center;
+}
+th {
+  background: var(--bg);
+  color: var(--text-alt);
+  font-weight: 600;
+}
+tr:nth-child(even) { background: #1a1d23; }
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.team-cell img {
+  width: 1.5rem;
+  border-radius: 50%;
+}

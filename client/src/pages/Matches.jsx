@@ -1,45 +1,58 @@
-// src/pages/Matches.jsx
-import { useState } from 'react';
-import SearchBar from '../components/SearchBar';
-import DateScroller from '../components/DateScroller';
-import FavouritesCarousel from '../components/FavouritesCarousel';
-import CompetitionList from '../components/CompetitionList';
-
-// contoh data dummy
-const weeks = ['LIVE','SAT 15 MAR','SUN 16 MAR','MON 17','TUE 18','...'];
-const favs = [
-  { label:'Premier League', logo:'/assets/pl.png' },
-  { label:'UCL',           logo:'/assets/ucl.png' },
-  { label:'Real Madrid',   logo:'/assets/rm.png' },
-  { label:'Barcelona',     logo:'/assets/barca.png' }
-];
-const comps = [
-  {
-    name:'UCL – International',
-    matches:[
-      { id:1, home:'DORTMUND', time:'02:00', away:'BARCELONA' },
-      { id:2, home:'ASTON VILLA', time:'02:00', away:'PSG' },
-    ]
-  },
-  {
-    name:'Liga Profesional – Argentina',
-    matches:[
-      { id:3, home:'VELEZ S', time:'FT 0-1', away:'SARMIENTO' }
-    ]
-  }
-];
+import { useState, useEffect } from "react";
+import "./Matches.css";
 
 export default function Matches() {
-  const [selWeek, setSelWeek] = useState(weeks[0]);
-  const [search, setSearch] = useState('');
+  const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const API = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    fetch(`${API}/matches`, { credentials: "include" })
+      .then((res) => {
+        if (!res.ok) throw new Error("Gagal memuat jadwal");
+        return res.json();
+      })
+      .then((data) => {
+        setMatches(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Loading jadwal …</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+
   return (
-    <div>
-      <SearchBar onSearch={setSearch}/>
-      <DateScroller
-        weeks={weeks} selected={selWeek}
-        onSelect={setSelWeek}/>
-      <FavouritesCarousel items={favs}/>
-      <CompetitionList competitions={comps}/>
+    <div className="matches">
+      <h2>Jadwal dan Skor</h2>
+      {matches.map((m) => (
+        <div key={m.id} className="match-row">
+          <img
+            src={m.HomeTeam.logo_url}
+            alt={m.HomeTeam.name}
+            className="logo"
+          />
+          <span className="team-name">{m.HomeTeam.name}</span>
+          <span className="score">
+            {m.status === "finished"
+              ? `${m.home_score} - ${m.away_score}`
+              : new Date(m.match_date).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+          </span>
+          <span className="team-name">{m.AwayTeam.name}</span>
+          <img
+            src={m.AwayTeam.logo_url}
+            alt={m.AwayTeam.name}
+            className="logo"
+          />
+        </div>
+      ))}
     </div>
   );
 }
