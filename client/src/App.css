@@ -3,24 +3,16 @@
 
 }
 */
-
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: red;
+  color: #333;
+}
 .app {
   margin: 0 auto;
 }
-.nav {
-  display: flex;
-  gap: 1rem;
-  background: #333;
-  padding: 2rem;
-}
-.nav a {
-  color: #fff;
-  text-decoration: none;
-}
-.nav a:hover {
-  text-decoration: underline;
-}
-
 .container {
   padding: 20px;
   max-width: 960px;

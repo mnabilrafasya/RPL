@@ -10,12 +10,6 @@ import './App.css'; // Assuming you have some CSS for styling
 export default function App() {
   return (
     <div className="app">
-      <nav className="nav">
-        <Link to="/">Home</Link>
-        <Link to="/matches">Matches</Link>
-        <Link to="/news">Berita</Link>
-        <Link to="/stats">Statistik</Link>
-      </nav>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

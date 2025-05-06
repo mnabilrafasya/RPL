@@ -1,11 +1,15 @@
 // src/pages/Home.jsx
-import React from 'react';
+import React from "react";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <section>
-      <h1>Welcome to Football App</h1>
-      <p>Stay updated with matches, news, and team stats.</p>
-    </section>
+    <div className="home">
+      <Navbar />
+      <h1>Welcome to the Football App</h1>
+      <p>
+        Your one-stop destination for all football news, matches, and stats.
+      </p>
+    </div>
   );
 }

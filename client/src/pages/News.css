@@ -1,5 +1,4 @@
 /* src/pages/News.css */
-.news-list { padding: 1rem; }
 .news-list h2 { margin-bottom: .5rem; color: var(--primary); }
 .news-card {
   display: flex;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Stats.css";
+import Navbar from "../components/Navbar";
 
 export default function Stats() {
   const [table, setTable] = useState([]);
@@ -14,22 +15,33 @@ export default function Stats() {
         return res.json();
       })
       .then((data) => {
-        console.log("Standings data:", data); // ⬅️ Tambahkan ini
-        setTable(data);
+        console.log("Standings data:", data);
+
+        // Data API langsung array baris dengan properti `Team`
+        let rows = [];
+        if (Array.isArray(data) && data.length > 0 && data[0].Team) {
+          rows = data;
+        } else {
+          // fallback jika struktur berubah
+          rows = Array.isArray(data) ? data : [];
+        }
+
+        console.log("Processed rows:", rows);
+        setTable(rows);
         setLoading(false);
       })
-      
       .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [API]);
 
   if (loading) return <p>Loading klasemen …</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <div className="stats">
+      <Navbar />
       <h2>Klasemen</h2>
       <table>
         <thead>
@@ -43,22 +55,30 @@ export default function Stats() {
           </tr>
         </thead>
         <tbody>
-          {table.map((row, i) => (
-            <tr key={row.team.id}>
-              <td>{i + 1}</td>
-              <td className="team-cell">
-                <img
-                  src={row.team?.logo_url || "/assets/default.png"}
-                  alt={row.team?.name || "Unknown"}
-                  onError={(e) => (e.currentTarget.src = "/assets/default.png")}
-                />
-              </td>
-              <td>{row.win}</td>
-              <td>{row.draw}</td>
-              <td>{row.loss}</td>
-              <td>{row.points}</td>
-            </tr>
-          ))}
+          {table.map((row, i) => {
+            const team = row.Team;
+            // Pastikan Team ada sebelum render
+            if (!team) return null;
+            return (
+              <tr key={team.id}>
+                <td>{i + 1}</td>
+                <td className="team-cell">
+                  <img
+                    src={team.logo_url || "/assets/default.png"}
+                    alt={team.name}
+                    onError={(e) =>
+                      (e.currentTarget.src = "/assets/default.png")
+                    }
+                  />
+                  {team.name}
+                </td>
+                <td>{row.win}</td>
+                <td>{row.draw}</td>
+                <td>{row.loss}</td>
+                <td>{row.points}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

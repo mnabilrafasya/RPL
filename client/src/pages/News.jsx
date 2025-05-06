@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './News.css';
+import Navbar from '../components/Navbar';
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -28,6 +29,7 @@ export default function News() {
 
   return (
     <div className="news-list">
+      <Navbar />
       <h2>Berita Terkini</h2>
       {news.map(n => (
         <div key={n.id} className="news-card">

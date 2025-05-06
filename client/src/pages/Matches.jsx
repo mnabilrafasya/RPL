@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+// src/pages/Matches.jsx
+import React, { useState, useEffect } from "react";
 import "./Matches.css";
+import Navbar from "../components/Navbar";
 
 export default function Matches() {
+  // 1) Deklarasi state – WAJIB sebelum return
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,13 +24,17 @@ export default function Matches() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [API]);
 
+  // 2) Tampilkan loading / error sebelum masuk ke return utama
   if (loading) return <p>Loading jadwal …</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
+  // 3) Return utama – sekarang `matches` pasti ada
   return (
     <div className="matches">
+      <Navbar />
+
       <h2>Jadwal dan Skor</h2>
       {matches.map((m) => (
         <div key={m.id} className="match-row">

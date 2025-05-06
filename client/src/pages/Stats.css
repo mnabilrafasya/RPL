@@ -1,5 +1,4 @@
 /* src/pages/Stats.css */
-.stats { padding: 1rem; }
 .stats h2 { margin-bottom: .5rem; color: var(--primary); }
 table {
   width: 100%;
@@ -17,7 +16,7 @@ th {
   color: var(--text-alt);
   font-weight: 600;
 }
-tr:nth-child(even) { background: #1a1d23; }
+
 .team-cell {
   display: flex;
   align-items: center;

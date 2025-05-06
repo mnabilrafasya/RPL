@@ -2,7 +2,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
+import App from './App';
+import './index.css' // Assuming you have some global CSS
 
 ReactDOM
   .createRoot(document.getElementById('root'))
@@ -10,4 +11,4 @@ ReactDOM
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  )
+  );
