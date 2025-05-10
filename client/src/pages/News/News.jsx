@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './News.css';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 
 export default function News() {
   const [news, setNews] = useState([]);

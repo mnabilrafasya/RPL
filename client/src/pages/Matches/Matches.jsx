@@ -1,7 +1,7 @@
 // src/pages/Matches.jsx
 import React, { useState, useEffect } from "react";
 import "./Matches.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 
 export default function Matches() {
   // 1) Deklarasi state – WAJIB sebelum return

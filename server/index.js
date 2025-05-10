@@ -1,3 +1,4 @@
+// File: server/index.js
 import express from "express";
 import dotenv from "dotenv";
 import session from "express-session";
@@ -7,6 +8,7 @@ import connectSessionSequelize from "connect-session-sequelize";
 import db from "./config/Database.js";
 import routes from "./routes/index.js";
 import errorHandler from "./middleware/errorHandler.js";
+import authRoutes from "./routes/auth.js";
 
 dotenv.config();
 
@@ -40,6 +42,7 @@ app.use(
   })
 );
 
+app.use('/api/admin', authRoutes);
 // sinkronisasi tabel session
 store.sync();
 
