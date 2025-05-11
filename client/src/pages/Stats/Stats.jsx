@@ -46,11 +46,12 @@ export default function Stats() {
       <table>
         <thead>
           <tr>
-            <th>#</th>
+            <th>No.</th>
             <th>Tim</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
+            <th>Main</th>
+            <th>Menang</th>
+            <th>Seri</th>
+            <th>Kalah</th>
             <th>Pts</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@ export default function Stats() {
                   />
                   {team.name}
                 </td>
+                <td>{row.played}</td>
                 <td>{row.win}</td>
                 <td>{row.draw}</td>
                 <td>{row.loss}</td>

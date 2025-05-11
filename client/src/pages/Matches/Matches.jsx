@@ -1,10 +1,8 @@
-// src/pages/Matches.jsx
 import React, { useState, useEffect } from "react";
 import "./Matches.css";
 import Navbar from "../../components/Navbar";
 
 export default function Matches() {
-  // 1) Deklarasi state – WAJIB sebelum return
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,40 +24,69 @@ export default function Matches() {
       });
   }, [API]);
 
-  // 2) Tampilkan loading / error sebelum masuk ke return utama
-  if (loading) return <p>Loading jadwal …</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  const scheduled = matches.filter((m) => m.status === "scheduled");
+  const finished = matches.filter((m) => m.status === "finished");
 
-  // 3) Return utama – sekarang `matches` pasti ada
-  return (
-    <div className="matches">
-      <Navbar />
+  if (loading) return <p className="loading">Memuat jadwal pertandingan …</p>;
+  if (error) return <p className="error">{error}</p>;
 
-      <h2>Jadwal dan Skor</h2>
-      {matches.map((m) => (
-        <div key={m.id} className="match-row">
-          <img
-            src={m.HomeTeam.logo_url}
-            alt={m.HomeTeam.name}
-            className="logo"
-          />
-          <span className="team-name">{m.HomeTeam.name}</span>
+  const renderMatch = (m) => (
+    <div key={m.id} className="match-card">
+      <div className="team-side">
+        <img src={m.HomeTeam.logo_url} alt={m.HomeTeam.name} />
+        <span>{m.HomeTeam.name}</span>
+      </div>
+
+      <div className="match-center">
+        {m.status === "finished" ? (
           <span className="score">
-            {m.status === "finished"
-              ? `${m.home_score} - ${m.away_score}`
-              : new Date(m.match_date).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+            {m.home_score} - {m.away_score}
           </span>
-          <span className="team-name">{m.AwayTeam.name}</span>
-          <img
-            src={m.AwayTeam.logo_url}
-            alt={m.AwayTeam.name}
-            className="logo"
-          />
+        ) : (
+          <span className="scheduled-text">vs</span>
+        )}
+        <span className="date">
+          {new Date(m.match_date).toLocaleString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </span>
+      </div>
+
+      <div className="team-side">
+        <span>{m.AwayTeam.name}</span>
+        <img src={m.AwayTeam.logo_url} alt={m.AwayTeam.name} />
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="matches-page">
+      <Navbar />
+      <div className="matches-container">
+        <h2>Jadwal & Hasil Pertandingan</h2>
+
+        <div className="matches-section">
+          <h3>Pertandingan Dijadwalkan</h3>
+          {scheduled.length > 0 ? (
+            scheduled.map(renderMatch)
+          ) : (
+            <p className="empty">Belum ada pertandingan terjadwal</p>
+          )}
         </div>
-      ))}
+
+        <div className="matches-section">
+          <h3>Pertandingan Selesai</h3>
+          {finished.length > 0 ? (
+            finished.map(renderMatch)
+          ) : (
+            <p className="empty">Belum ada hasil pertandingan</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

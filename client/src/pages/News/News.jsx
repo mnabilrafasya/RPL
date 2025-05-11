@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import './News.css';
-import Navbar from '../../components/Navbar';
+import { useState, useEffect } from "react";
+import "./News.css";
+import Navbar from "../../components/Navbar";
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -9,31 +9,36 @@ export default function News() {
   const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`${API}/news`, { credentials: 'include' })
-      .then(res => {
-        if (!res.ok) throw new Error('Gagal memuat berita');
+    fetch(`${API}/news`, { credentials: "include" })
+      .then((res) => {
+        if (!res.ok) throw new Error("Gagal memuat berita");
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setNews(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
   }, []);
 
   if (loading) return <p>Loading berita …</p>;
-  if (error)   return <p style={{ color:'red' }}>{error}</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <div className="news-list">
       <Navbar />
       <h2>Berita Terkini</h2>
-      {news.map(n => (
+      {news.map((n) => (
         <div key={n.id} className="news-card">
-          {n.image_url && <img src={n.image_url} alt={n.title} />}
+          {n.image_url && (
+            <img
+              src={`http://localhost:5000/uploads/${n.image_url}`}
+              alt={n.title}
+            />
+          )}
           <div className="news-content">
             <h3>{n.title}</h3>
             <p>{n.caption}</p>

@@ -35,14 +35,6 @@ const Standing = db.define('Standing', {
     type: DataTypes.INTEGER,
     defaultValue: 0
   },
-  goals_for: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
-  goals_against: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
   points: {
     type: DataTypes.VIRTUAL,
     get() {

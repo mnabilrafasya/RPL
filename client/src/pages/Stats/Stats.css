@@ -1,28 +1,84 @@
-/* src/pages/Stats.css */
-.stats h2 { margin-bottom: .5rem; color: var(--primary); }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  overflow: hidden;
+.stats {
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-th, td {
-  padding: .5rem;
+
+.stats h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabel */
+.stats table {
+  width: 95%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stats thead {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  text-align: left;
+}
+
+.stats th,
+.stats td {
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.stats th:first-child,
+.stats td:first-child {
   text-align: center;
 }
-th {
-  background: var(--bg);
-  color: var(--text-alt);
-  font-weight: 600;
+
+.stats tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .team-cell {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.75rem;
+  text-align: left;
 }
+
 .team-cell img {
-  width: 1.5rem;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #f1f5f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats h2 {
+    font-size: 1.5rem;
+  }
+
+  .stats table {
+    font-size: 0.9rem;
+  }
+
+  .stats th,
+  .stats td {
+    padding: 0.6rem;
+  }
+
+  .team-cell img {
+    width: 24px;
+    height: 24px;
+  }
 }

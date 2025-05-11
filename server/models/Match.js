@@ -1,3 +1,4 @@
+// File: server/models/Match.js
 import { DataTypes } from "sequelize";
 import db from "../config/Database.js";
 import Team from "./Team.js";

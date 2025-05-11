@@ -4,16 +4,21 @@ import dotenv from "dotenv";
 import session from "express-session";
 import cors from "cors";
 import connectSessionSequelize from "connect-session-sequelize";
+import path from "path";
 
 import db from "./config/Database.js";
 import routes from "./routes/index.js";
 import errorHandler from "./middleware/errorHandler.js";
 import authRoutes from "./routes/auth.js";
+import teamRoutes from "./routes/team.js";
+import matchRoutes from "./routes/matches.js";
+import standingsRouter from './routes/standings.js';
 
 dotenv.config();
 
 const app = express();
 const SequelizeStore = connectSessionSequelize(session.Store);
+
 const store = new SequelizeStore({
   db,
   tableName: "sessions",
@@ -42,9 +47,15 @@ app.use(
   })
 );
 
-app.use('/api/admin', authRoutes);
+app.use("/api/admin", authRoutes);
+app.use("/api/teams", teamRoutes);
+app.use("/api/matches", matchRoutes);
+app.use('/api/standings', standingsRouter);
+
 // sinkronisasi tabel session
 store.sync();
+
+app.use('/uploads', express.static(path.join('public')));
 
 // 3) Test endpoint
 app.get("/api/hello", (req, res) => {
