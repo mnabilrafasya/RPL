@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className="navbarInner">
         <div className="navbarLogo">
           <img
-            src="/logoBEM.png"
+            src="/4-2-3-1 Logo.png"
             alt="Logo 4-2-3-1"
             className="logoImage"
           />
