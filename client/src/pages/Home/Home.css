@@ -5,7 +5,7 @@
 
 .hero-section {
   margin: 20px;
-  background-color: #1e3a8a;
+  background-color: #0033cc;
   color: white;
   padding: 40px;
   text-align: center;
@@ -69,4 +69,92 @@
 .feature-description {
   font-size: 1rem;
   color: #666;
+}
+
+/* HIGHLIGHT SECTION */
+.highlight-section {
+  padding: 2rem;
+  background: linear-gradient(to right, #0033cc);
+  border-radius: 10px;
+  color: white;
+  margin: 40px 20px;
+}
+
+.highlight-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-title {
+  color: white !important;
+}
+
+.highlight-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.highlight-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.highlight-card {
+  min-width: 260px;
+  background-color: rgba(0, 0, 50, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: scale(1.03);
+}
+
+.highlight-image {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-info {
+  padding: 1rem;
+}
+
+.highlight-info small {
+  font-size: 0.75rem;
+  color: #d1d5db;
+}
+
+.highlight-info h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.highlight-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #00e0ff;
+  border-radius: 8px;
+  color: #00e0ff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.highlight-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
